@@ -24,6 +24,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
+#include "labelchild.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -35,7 +36,7 @@ public:
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QLabel *writingarea;
+    labelchild *writingarea;
     QFormLayout *formLayout_3;
     QFormLayout *formLayout;
     QPushButton *pushButton_2;
@@ -58,7 +59,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1088, 574);
+        MainWindow->resize(1088, 582);
         actionOpenfile = new QAction(MainWindow);
         actionOpenfile->setObjectName(QString::fromUtf8("actionOpenfile"));
         actionSavefile = new QAction(MainWindow);
@@ -69,13 +70,13 @@ public:
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer = new QSpacerItem(900, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(881, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        writingarea = new QLabel(centralWidget);
+        writingarea = new labelchild(centralWidget);
         writingarea->setObjectName(QString::fromUtf8("writingarea"));
-        writingarea->setBaseSize(QSize(0, 0));
+        writingarea->setBaseSize(QSize(300, 300));
         QFont font;
         font.setBold(false);
         font.setWeight(50);

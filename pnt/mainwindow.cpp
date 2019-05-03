@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -7,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -14,57 +14,34 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QWidget * MainWindow::getlabel(){
+    return ui->writingarea;
+
+}
+
+int MainWindow::getPenSize()
+{
+    return penSize;
+}
+
+QColor MainWindow::getColor()
+{
+    return color;
+}
+
+int MainWindow::getTool()
+{
+    return tool;
+}
+
+void MainWindow::getmian(MainWindow *_m)
+{
+    ui->writingarea->mian=_m;
+}
+
 bool MainWindow::setLabeltext(QString g)
 {
     ui->label->setText(g);
-}
-
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    if(event->button()==Qt::LeftButton)
-
-    x=event->x();
-    y=event->y();
-
-    update();
-
-}
-
-void MainWindow::mouseMoveEvent(QMouseEvent *event)
-{
-    x1=event->x();
-    y1=event->y();
-    //b.setX(x);
-    //b.setY(y);
-    update();
-}
-
-void MainWindow::paintEvent(QPaintEvent *event) {
-
-    QPainter paint(ui->writingarea);//
-    paint.setPen(QPen(QBrush(QColor(color)),penSize));
-    if(line==true){
-        paint.drawLine(x,y,x2,y2);
-    }
-    if(circle==true){
-        paint.drawEllipse(x,y,x1,x1);
-    }
-    if(square==true){
-        paint.drawLine(x,y,(x1-x),y);
-        paint.drawLine((x1-x),y,(x1-x),(y1-y));
-        paint.drawLine((x1-x),(y1-y),x,(y1-y));
-        paint.drawLine(x,(y1-y),x,y);
-    }
-    if(eclipse==true){
-        paint.drawEllipse(x,y,x1,y1);
-    }
-    ui->writingarea->paintEngine();
-}
-
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
-{
-    x2=event->x();
-    y2=event->y();
 }
 
 void MainWindow::offall()
@@ -77,14 +54,12 @@ void MainWindow::offall()
 
 void MainWindow::on_pushButton_clicked()
 {
-    offall();
-    line=true;
+    tool=0;
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    offall();
-    circle=true;
+    tool=1;
 }
 
 
@@ -98,8 +73,7 @@ void MainWindow::on_dial_valueChanged(int value)
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    offall();
-    square=true;
+    tool=2;
 }
 
 void MainWindow::on_dial_3_valueChanged(int value)
@@ -124,8 +98,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    offall();
-    eclipse=true;
+    tool=3;
 }
 
 void MainWindow::on_actionOpenfile_triggered()
@@ -134,7 +107,8 @@ void MainWindow::on_actionOpenfile_triggered()
     if(image.isNull()){
         return;
     }
-   ui->writingarea->setPixmap(image);
-    ui->writingarea->setSizeIncrement(image.width(),image.height());
+   ui->writingarea->setimage_(&image);
+
 }
+
 

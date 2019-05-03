@@ -10,7 +10,10 @@ class labelchild : public QLabel
 {
     Q_OBJECT
 public:
-    labelchild();
+    explicit labelchild(QWidget *parent = nullptr);
+    ~labelchild() override;
+    MainWindow * mian;
+    void setimage_(QPixmap *r);
 
 signals:
 
@@ -19,18 +22,22 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+private slots:
+
 private:
+    void addline();
+    void setTool();
+    //void offall();
+    QWidget * mainwindow;
     int x,y,x1,y1,x2,y2;
-    bool line=false;
-    bool circle=false;
-    bool square=false;
-    bool eclipse=false;
-    int penSize=0;
-    QColor color;
-    int ca,cb,cc;
-    QString spenSize="0";
+    int tool=0;
     QPixmap image;
+    //QPainter paint;
 public slots:
+    void setLine();
+    void setcircle();
+    void setSquare();
+    void setEclipse();
 };
 
 #endif // LABELCHILD_H

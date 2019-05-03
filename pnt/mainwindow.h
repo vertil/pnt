@@ -10,6 +10,8 @@
 #include <QtWidgets>
 
 
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -19,14 +21,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    Ui::MainWindow *ui;
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
-
+    QWidget * getlabel();
+    QWidget * getform();
+    int getPenSize();
+    QColor getColor();
+    int getTool();
+    void getmian(MainWindow * _m);
 protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void paintEvent(QPaintEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+
 private slots:
     void offall();
     bool setLabeltext(QString g);
@@ -51,9 +56,11 @@ private slots:
 
     void on_actionOpenfile_triggered();
 
+
+
 private:
-    Ui::MainWindow *ui;
-    int x,y,x1,y1,x2,y2;
+
+    int tool=0;
     bool line=false;
     bool circle=false;
     bool square=false;
@@ -66,4 +73,5 @@ private:
 
 };
 
-#endif // MAINWINDOW_H
+
+#endif  //MAINWINDOW_H

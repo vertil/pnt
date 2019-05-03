@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1088</width>
-    <height>574</height>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,14 +22,14 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>900</width>
+        <width>881</width>
         <height>20</height>
        </size>
       </property>
      </spacer>
     </item>
     <item>
-     <widget class="QLabel" name="writingarea">
+     <widget class="labelchild" name="writingarea">
       <property name="baseSize">
        <size>
         <width>300</width>
@@ -170,6 +170,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>labelchild</class>
+   <extends>QLabel</extends>
+   <header>labelchild.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
