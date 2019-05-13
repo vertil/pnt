@@ -30,6 +30,7 @@ public:
     QColor getColor();
     int getTool();
     void getmian(MainWindow * _m);
+    QString fileAdr;
 protected:
 
 private slots:
@@ -58,6 +59,8 @@ private slots:
 
 
 
+    void on_actionSavefile_triggered();
+
 private:
 
     int tool=0;
@@ -70,6 +73,7 @@ private:
     int ca,cb,cc;
     QString spenSize="0";
     QPixmap image;
+
 
 };
 

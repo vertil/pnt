@@ -39,6 +39,7 @@ void MainWindow::getmian(MainWindow *_m)
     ui->writingarea->mian=_m;
 }
 
+
 bool MainWindow::setLabeltext(QString g)
 {
     ui->label->setText(g);
@@ -103,12 +104,18 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_actionOpenfile_triggered()
 {
-    image=QFileDialog::getOpenFileName();
+    fileAdr=QFileDialog::getOpenFileName();
+    image=fileAdr;
     if(image.isNull()){
         return;
     }
    ui->writingarea->setimage_(&image);
-
+   fileAdr=QFileDialog::FileName;
 }
 
 
+
+void MainWindow::on_actionSavefile_triggered()
+{
+    ui->writingarea->saveimage();
+}

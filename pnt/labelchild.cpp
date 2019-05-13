@@ -15,17 +15,18 @@ labelchild::~labelchild()
 
 void labelchild::mousePressEvent(QMouseEvent *event)
 {
-    if(event->button()==Qt::LeftButton)
+
     x=event->x();
     y=event->y();
-    update();
+    move=true;
+
 }
 
 void labelchild::mouseMoveEvent(QMouseEvent *event)
 {
-    if(event->button()==Qt::LeftButton)
     x1=event->x();
     y1=event->y();
+
     update();
 }
 
@@ -35,40 +36,82 @@ void labelchild::paintEvent(QPaintEvent *event)
     QPainter paint(&image);
     QPainter paintthis(this);
     paint.setPen(QPen(QBrush(QColor(mian->getColor())),mian->getPenSize()));
-    //paintthis.drawPixmap(0,0,image);
+    paintthis.setPen(QPen(QBrush(QColor(mian->getColor())),mian->getPenSize()));
+    paintthis.drawPixmap(0,0,image);
+    if(x!=NULL)
     switch (tool) {
         case 0: ;
-                paint.drawLine(x,y,x2,y2);
-                paintthis.drawLine(x,y,x1,y1);
-                paintthis.drawPixmap(0,0,image);
-
+                if(move==true)
+                {
+                    paintthis.drawLine(x,y,x1,y1);
+                }else{
+                    paint.drawLine(x,y,x2,y2);
+                    paintthis.drawPixmap(0,0,image);
+                    nullXY();
+                }
                 break;
-        case 1: paint.drawEllipse(x,y,x1,x1); break;
-
-        case 2: paint.drawLine(x,y,(x1-x),y);
-                paint.drawLine((x1-x),y,(x1-x),(y1-y));
-                paint.drawLine((x1-x),(y1-y),x,(y1-y));
-                paint.drawLine(x,(y1-y),x,y);
+        case 1:
+                if(move==true)
+                {
+                    paintthis.drawEllipse(x,y,x1,x1);
+                }else{
+                    paint.drawEllipse(x,y,x2,x2);
+                    paintthis.drawPixmap(0,0,image);
+                    nullXY();
+                }
                 break;
-        case 3: paint.drawEllipse(x,y,x1,y1); break;
+
+        case 2:
+                if(move==true)
+                {
+                    paintthis.drawRect(x,y,x1,y1);
+                }else{
+                    paint.drawRect(x,y,x2,y2);
+                    paintthis.drawPixmap(0,0,image);
+                    nullXY();
+        }
+        break;
+
+        case 3:
+                if(move==true)
+                {
+                    paintthis.drawEllipse(x,y,x1,y1);
+                }else{
+                    paint.drawEllipse(x,y,x2,y2);
+                    paintthis.drawPixmap(0,0,image);
+                    nullXY();
+                }
+                break;
     }
 }
 
 void labelchild::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(event->button()==Qt::LeftButton)
+    move =false;
     x2=event->x();
     y2=event->y();
     update();
+
 }
 
-void labelchild::addline()
+void labelchild::nullXY()
+{
+    x=NULL;
+    y=NULL;
+    x1=NULL;
+    y1=NULL;
+    x2=NULL;
+    y2=NULL;
+
+}
+
+/*void labelchild::addline()
 {
     QPainter p(this);
     p.drawLine(x,y,x1,y1);
     p.end();
     this->update();
-}
+}*/
 
 void labelchild::setimage_(QPixmap *r)
 {
@@ -76,16 +119,25 @@ void labelchild::setimage_(QPixmap *r)
     image=*r;
     this->setPixmap(image);
     this->setSizeIncrement(image.size());
+
     //after setpixmap i write qpainter to draw pixmap and not work, but in paint event;
+}
+
+void labelchild::saveimage()
+{
+    QFile file(QFileDialog::getSaveFileName(this, tr("Save File"),
+                                            "/home/jana/untitled.png",
+                                            tr("Images (*.png *.xpm *.jpg)")));
+    file.open(QIODevice::WriteOnly);
+    image.save(&file);
+
+
+
+
 }
 
 void labelchild::setTool()
 {
     tool=mian->getTool();
-}
-
-void labelchild::setLine()
-{
-
 }
 

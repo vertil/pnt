@@ -14,7 +14,7 @@ public:
     ~labelchild() override;
     MainWindow * mian;
     void setimage_(QPixmap *r);
-
+    void saveimage();
 signals:
 
 protected:
@@ -25,19 +25,21 @@ protected:
 private slots:
 
 private:
+    void nullXY();
     void addline();
     void setTool();
     //void offall();
     QWidget * mainwindow;
     int x,y,x1,y1,x2,y2;
+    //int xx,yy,xx1,yy1,xx2,yy2;
     int tool=0;
     QPixmap image;
-    //QPainter paint;
+    bool move=false;
+    bool release=false;
+    QString adress;
+
 public slots:
-    void setLine();
-    void setcircle();
-    void setSquare();
-    void setEclipse();
+
 };
 
 #endif // LABELCHILD_H
