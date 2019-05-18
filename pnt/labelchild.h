@@ -15,6 +15,7 @@ public:
     MainWindow * mian;
     void setimage_(QPixmap *r);
     void saveimage();
+    void setsize(int a,int b);
 signals:
 
 protected:

@@ -61,6 +61,8 @@ private slots:
 
     void on_actionSavefile_triggered();
 
+    void on_pushButton_size_clicked();
+
 private:
 
     int tool=0;

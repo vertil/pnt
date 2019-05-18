@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
 }
 
 MainWindow::~MainWindow()
@@ -118,4 +117,9 @@ void MainWindow::on_actionOpenfile_triggered()
 void MainWindow::on_actionSavefile_triggered()
 {
     ui->writingarea->saveimage();
+}
+
+void MainWindow::on_pushButton_size_clicked()
+{
+    ui->writingarea->setsize(ui->xSize->text().toInt(),ui->ySize->text().toInt());
 }

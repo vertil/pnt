@@ -136,6 +136,11 @@ void labelchild::saveimage()
 
 }
 
+void labelchild::setsize(int a, int b)
+{
+    this->resize(a,b);
+}
+
 void labelchild::setTool()
 {
     tool=mian->getTool();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1088</width>
-    <height>582</height>
+    <width>1141</width>
+    <height>917</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>881</width>
+        <width>900</width>
         <height>20</height>
        </size>
       </property>
@@ -51,14 +51,14 @@
      <layout class="QFormLayout" name="formLayout_3">
       <item row="0" column="0">
        <layout class="QFormLayout" name="formLayout">
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
            <string>Circle</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <widget class="QPushButton" name="pushButton_3">
           <property name="text">
            <string>square</string>
@@ -66,27 +66,27 @@
          </widget>
         </item>
         <item row="5" column="0">
-         <widget class="QDial" name="dial">
-          <property name="maximum">
-           <number>50</number>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
          <widget class="QPushButton" name="pushButton_5">
           <property name="text">
            <string>eclipse</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="6" column="0" colspan="2">
+         <widget class="QDial" name="dial">
+          <property name="maximum">
+           <number>50</number>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
          <widget class="QPushButton" name="pushButton">
           <property name="text">
            <string>line</string>
@@ -96,29 +96,42 @@
        </layout>
       </item>
       <item row="1" column="0">
+       <widget class="QLineEdit" name="xSize"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLineEdit" name="ySize"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="pushButton_size">
+        <property name="text">
+         <string>setSize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
        <layout class="QFormLayout" name="formLayout_2">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QDial" name="dial_3">
           <property name="maximum">
            <number>255</number>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <widget class="QDial" name="dial_4">
           <property name="maximum">
            <number>255</number>
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QDial" name="dial_2">
           <property name="maximum">
            <number>255</number>
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <widget class="QPushButton" name="pushButton_4">
           <property name="text">
            <string>SetColor</string>
@@ -136,7 +149,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1088</width>
+     <width>1141</width>
      <height>31</height>
     </rect>
    </property>
@@ -147,7 +160,13 @@
     <addaction name="actionOpenfile"/>
     <addaction name="actionSavefile"/>
    </widget>
+   <widget class="QMenu" name="menuedit">
+    <property name="title">
+     <string>edit</string>
+    </property>
+   </widget>
    <addaction name="menufile"/>
+   <addaction name="menuedit"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
