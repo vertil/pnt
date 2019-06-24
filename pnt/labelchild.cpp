@@ -18,6 +18,7 @@ void labelchild::mousePressEvent(QMouseEvent *event)
 
     x=event->x();
     y=event->y();
+
     move=true;
 
 }
